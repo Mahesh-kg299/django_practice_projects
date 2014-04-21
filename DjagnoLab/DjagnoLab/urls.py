@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import ManageCookieView, ManageSessionView
+from .views import ManageCookieView, ManageSessionView, UserCreateView, UserLoginView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,4 +24,6 @@ urlpatterns = [
     path('cookies/', ManageCookieView.as_view()),
     path('sessions/<str:action>', ManageSessionView.as_view()),
     path('sessions/', ManageSessionView.as_view()),
+    path('create-user/', UserCreateView.as_view()),
+    path('login/', UserLoginView.as_view()),
 ]
