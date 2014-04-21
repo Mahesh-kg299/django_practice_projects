@@ -1,0 +1,20 @@
+from django.views import View
+from django.http import HttpRequest, HttpResponse
+
+class ManageCookieView(View):
+    def get(self, request: HttpRequest, action=None):
+        if action == 'set':
+            username = request.GET.get('username', 'guest')
+            respose = HttpResponse('Cookie: username set.')
+            respose.set_cookie('username', username, max_age=3600, httponly=True, secure=True)
+            return respose
+        if action == 'delete':
+            respose = HttpResponse('Cookie: username deleted.')
+            respose.delete_cookie('username')
+            return respose
+        else:
+            username = request.COOKIES.get('username')
+            if username:
+                return HttpResponse(f'Username is: {username}')
+            else:
+                return HttpResponse('No username is set.')
