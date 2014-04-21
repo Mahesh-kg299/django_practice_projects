@@ -16,10 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import ManageCookieView
+from .views import ManageCookieView, ManageSessionView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('cookies/<str:action>', ManageCookieView.as_view()),
     path('cookies/', ManageCookieView.as_view()),
+    path('sessions/<str:action>', ManageSessionView.as_view()),
+    path('sessions/', ManageSessionView.as_view()),
 ]
