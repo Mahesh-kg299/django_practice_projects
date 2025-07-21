@@ -1,0 +1,45 @@
+{% extends 'UserApp/layout/base.html' %}
+
+
+{% block content %}
+
+<section class="container">
+    <h1 class="text-center">Your Profile</h1>
+</section>
+
+<section class="container">
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <th>First Name</th>
+                <td> {{ user.first_name }} </td>
+            </tr>
+            <tr>
+                <th>Last Name</th>
+                <td> {{ user.last_name }} </td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td> {{ user_data.city }} </td>
+            </tr>
+            <tr>
+                <th>Date of Birsth</th>
+                <td> {{ user_data.dob }} </td>
+            </tr>
+            <tr>
+                <th>Username</th>
+                <td> {{ user.username }} </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-4">
+            <a href="/app/change_password/" class="btn btn-primary">Change Passowrd</a>
+        </div>
+        <div class="col-4">
+            <a href="/app/delete/" class="btn btn-danger">Delete</a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

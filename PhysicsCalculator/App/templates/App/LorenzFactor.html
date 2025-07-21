@@ -1,0 +1,50 @@
+{% extends 'App/layout/formBlock.html' %}
+
+{% block title %}
+Lorenz Factor
+{% endblock %}
+
+{% block heading %}
+Calculate Lorenz Factor
+{% endblock %}
+
+{% block form_fields %}
+
+<div class="row">
+    <div class="col-12">
+        <label for="velocity" class="form-label">Velocity</label>
+        <input type="text" name="velocity" id="velocity" class="form-control" placeholder="Enter velocity in v/c">
+    </div>
+</div>
+
+{% endblock %}
+
+{% block result %}
+
+<div class="row">
+    <div class="col-6">
+        <h3>Gamma:</h3>
+    </div>
+    <div class="col-6">
+        <h3 class="result"></h3>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script>
+    let result = document.querySelector('.result')
+    let submit = async (e) => {
+        e.preventDefault()
+        data = new FormData(form)
+        data['velocity'] = document.querySelector('input[name=velocity]').value
+        let jsonData = await sendData('/app/lorenz_factor/', data)
+        result.innerHTML = getFormatedeValue(jsonData.value)
+    }
+
+    let form = document.querySelector('form')
+    form.addEventListener('submit', submit)
+
+</script>
+{% endblock %}

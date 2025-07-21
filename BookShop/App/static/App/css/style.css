@@ -1,0 +1,30 @@
+body {
+    background-color: #004050;
+}
+
+h1 {
+    color: white;
+}
+
+form {
+    background-color: #006070;
+    color: white;
+}
+
+.form-control, .form-control:focus {
+    background-color: #008090;
+    color: white;
+}
+
+.table {
+    background-color: white;
+    color: white;
+}
+
+table thead tr {
+    background-color: #003034;
+}
+
+table tbody tr {
+    background-color: #006070;
+}

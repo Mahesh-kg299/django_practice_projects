@@ -1,0 +1,12 @@
+{% extends 'App/layout/base.html' %}
+
+{% block content %}
+
+<section class="container py-2">
+    <h1 class="text-center">{% block heading %}{% endblock %}</h1>
+</section>
+<section class="container">
+    {% block mainContent %}{% endblock %}
+</section>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'App/layout/formBlock.html' %}
+
+{% block title %}
+Energy From Mass
+{% endblock %}
+
+{% block heading %}
+Convert Mass to Energy
+{% endblock %}
+
+{% block form_fields %}
+
+<div class="row">
+    <div class="col-12">
+        <label for="mass" class="form-label">Mass</label>
+        <input type="text" name="mass" id="mass" class="form-control" placeholder="Enter mass in kg">
+    </div>
+</div>
+
+{% endblock %}
+
+{% block result %}
+
+<div class="row">
+    <div class="col-6">
+        <h3>Energy:</h3>
+    </div>
+    <div class="col-6">
+        <h3 class="result"></h3>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script>
+    let result = document.querySelector('.result')
+    let submit = async (e) => {
+        e.preventDefault()
+        data = new FormData(form)
+        data['mass'] = document.querySelector('input[name=mass]').value
+        let jsonData = await sendData('/app/mass_to_energy/', data)
+        result.innerHTML = getFormatedeValue(jsonData.value) + ' J'
+    }
+
+    let form = document.querySelector('form')
+    form.addEventListener('submit', submit)
+
+</script>
+{% endblock %}

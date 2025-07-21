@@ -1,0 +1,52 @@
+{% extends 'App/layout/formBlock.html' %}
+
+{% block title %}
+Convert Wavelength to Frequency
+{% endblock %}
+
+{% block heading %}
+Convert Wavelength to Frequency
+{% endblock %}
+
+{% block form_fields %}
+
+
+<div class="row">
+    <div class="col-12">
+        <label for="wavelength" class="form-label">Wavelength</label>
+        <input type="text" name="wavelength" id="wavelength" class="form-control" placeholder="Enter wavelength in Hz">
+    </div>
+</div>
+
+{% endblock %}
+
+{% block result %}
+
+<div class="row">
+    <div class="col-6">
+        <h3>Frequency:</h3>
+    </div>
+    <div class="col-6">
+        <h3 class="result"></h3>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block script %}
+<script>
+    let result = document.querySelector('.result')
+    let submit = async (e) => {
+        e.preventDefault()
+        data = new FormData(form)
+        data['wavelength'] = document.querySelector('input[name=wavelength]').value
+        let jsonData = await sendData('/app/wavelength_to_freq/', data)
+        result.innerHTML = getFormatedeValue(jsonData.value) + ' Hz'
+    }
+
+    let form = document.querySelector('form')
+    form.addEventListener('submit', submit)
+
+</script>
+{% endblock %}

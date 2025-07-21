@@ -1,0 +1,59 @@
+{% extends 'App/layout/formBlock.html' %}
+
+{% block title %}
+Radius to Mass
+{% endblock %}
+
+{% block heading %}
+Convert Radius to Mass
+{% endblock %}
+
+{% block form_fields %}
+
+
+<div class="row">
+    <div class="col-12">
+        <label for="radius" class="form-label">Radius</label>
+        <input type="text" name="radius" id="radius" class="form-control" placeholder="Enter radius">
+    </div>
+    <div class="col-12">
+        <label for="unit" class="form-label">Unit</label>
+        <select name="unit" id="unit" class="form-select">
+            <option value="1">Meter</option>
+            <option value="1000">Kilometer</option>
+        </select>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block result %}
+
+<div class="row">
+    <div class="col-6">
+        <h3>Mass:</h3>
+    </div>
+    <div class="col-6">
+        <h3 class="result"></h3>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script>
+    let result = document.querySelector('.result')
+    let submit = async (e) => {
+        e.preventDefault()
+        data = new FormData(form)
+        data['radius'] = document.querySelector('input[name=radius]').value
+        data['unit'] = document.querySelector('select[name=unit]').value
+        let jsonData = await sendData('/app/SC_radius_to_mass/', data)
+        result.innerHTML = getFormatedeValue(jsonData.value) + ' Kg'
+    }
+
+    let form = document.querySelector('form')
+    form.addEventListener('submit', submit)
+
+</script>
+{% endblock %}

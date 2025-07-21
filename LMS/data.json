@@ -1,0 +1,14 @@
+{
+    "title": "The Cuteness Chinchila",
+    "author": "Robert Bhai",
+    "isbn": 102,
+    "is_borrowed": false,
+    "borrowed_by": null
+}
+{
+    "title": "Into the Dark Forest",
+    "author": "Salim Dai",
+    "isbn": 104,
+    "is_borrowed": false,
+    "borrower": null
+}

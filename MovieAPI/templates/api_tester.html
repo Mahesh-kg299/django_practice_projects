@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Testing</title>
+    <style>
+        #dataTable tr td,  #dataTable tr td th {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <form action="" onsubmit="submitForm(event)">
+            {% csrf_token %}
+            <div>
+                <label for="S!_method">Method</label>
+                <select name="method" id="S1_method">
+                    <option value="GET">Get</option>
+                    <option value="POST">Post</option>
+                    <option value="PUT">Put</option>
+                    <option value="DELETE">Delete</option>
+                </select>
+            </div>
+            <div>
+                <label for="IT1_url">Enter URL</label>
+                <input style="width: 500px;" type="text" name="url" id="IT1_url"></div>
+            <div>
+                <table id="dataTable">
+                    <thead>
+                        <tr>
+                            <th>Key</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+        <div class="responce-container">
+
+        </div>
+    </div>
+    {% load static %}
+    <script src="{% static 'api_tester.js' %}"></script>
+</body>
+</html>

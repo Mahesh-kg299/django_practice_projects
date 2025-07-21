@@ -1,0 +1,26 @@
+{% extends 'App/layout/contentBlock.html' %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block heading %}
+Welcom to Physics Calculator
+{% endblock %}
+
+{% block mainContent %}
+
+
+<div class="row mt-4 text-center">
+    <div class="col-3">
+        <a href="/app/mass_to_energy/" class="btn btn-success">Mass to Energy</a>
+    </div>
+    <div class="col-3">
+        <a href="/app/wavelength_to_freq" class="btn btn-success">Wavelength to Frequency</a>
+    </div>
+    <div class="col-3">
+        <a href="/app/SC_radius_to_mass" class="btn btn-success">Schwarzschild Radius to Mass</a>
+    </div>
+</div>
+
+{% endblock %}
